@@ -1,38 +1,322 @@
-.App {
-  text-align: center;
+body,html,button,li,ul,a {
+  all: unset;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-color: #000;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.body{
+  background-color: #333;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
+  font-family: sans-serif;
+  flex-direction: column;
+  font-size: 28px;
+}
+
+.playlist::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.playlist::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+/* 
+.playlist::-webkit-scrollbar-track{
+  border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+} */
+
+.play-button{
+  color: #ccc;
+  display: flex;
+  justify-self: flex-end;
+  align-self: center;
+  text-align: center;
+  padding: 10px 70px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-bottom: 150px;
+  font-size: 46px;
+  line-height: 50px;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.4);
+  transition: all 0.1s ease-in-out;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #333;
+}
+.play-button:hover{
+  box-shadow: 0px 0px 60px 25px rgba(50, 50, 50, 0.4);
+  transition: all 0.1s ease-in-out;
+  transform: scale(0.95);
+
+}
+
+.playlist{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid #777;
+  padding:50px 100px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  max-width: 90vw;
+  max-height: 60vh;
+  margin:50px 50px;
+}
+
+.step{
+  display: flex;
+  padding-left: 1px;
+  flex-direction: column-reverse;
+}
+
+.note{
+  color:#eee;
+  text-align: center;
+  line-height:20px;
+  border:1px #aaa solid;
+  width: 16px;
+  height: 16px;
+  transition: 0.1s ease-in-out all;
+}
+.note:hover{
+  transition: 0.1s ease-in-out all;
+  transform: scale(1.8);
+}
+.chooseNote{
+  display: flex;
+  margin-top: 60px;
+}
+.selectedNote{
+  font-size: 12px;
+  margin-left: 15px;
+  color:#eee;
+  line-height:50px;
+  border:1px #aaa solid;
+  width: 16px;
+  height: 16px;
+  transition: 0.1s ease-in-out all;
+}
+.buttons{
+  display: flex;
+}
+
+
+#selected_note{
+  width: 25px;
+  height: 25px;
+  border:1px solid #aaa;
+  margin-right: 50px;
+}
+
+
+.selectedNote:hover{
+  transition: 0.1s ease-in-out all;
+  transform: scale(2.2);
+}
+.cursor{
+  color:#333;
+  text-align: center;
+  transition: 0.1s ease-in-out all;
+  line-height:20px;
+  border:1px #aaa solid;
+  width: 16px;
+  height: 16px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.cursor:hover{
+  transition: 0.1s ease-in-out all;
+  transform: scale(1.7);
+}
+.break{
+  min-width: 7px;
+  min-height: 100%;
+  border:none;
+  background-color: #222;
+}
+.setBPM{
+  position: absolute;
+  left: 150px;
+  top: 70px;
+}
+
+#bpmtext{
+  background-color: #777;
+  color: #ccc;
+  width:75px;
+  height: 30px;
+  font-size: 32px;
+  line-height: 52px;
+}
+
+.buttonBPM{
+  color: #ccc;
+  position: relative;
+  top:4px;
+  text-align: center;
+  padding: 5px 5px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-bottom: 150px;
+  font-size: 46px;
+  line-height: 27px;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.4);
+  transition: all 0.1s ease-in-out;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #333;
+}
+.buttonBPM:hover{
+  box-shadow: 0px 0px 60px 25px rgba(50, 50, 50, 0.4);
+  transition: all 0.1s ease-in-out;
+  transform: scale(0.95);
+
+}
+
+.break-octave{
+  min-width: 100%;
+  min-height: 6px;
+  border:none;
+  background-color: #333;
+}
+
+.loopError{
+  color:#c00;
+  position: relative;
+  top:0;
+}
+.play-button img{
+  width: 50px;
+  height: 50px;
+}
+
+.svg{
+  width: 50px;
+  height: 50px;
+}
+.uploadFile{
+  width: 200px;
+  height: 70px;
+  margin-left: -75px;
+  margin-top: -10px;
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+}
+
+
+.pseudo-body{
+  position: absolute;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  top:0;
+  left:0;
+  background: radial-gradient(circle, rgba(11,11,11,1) 0%, rgba(7,7,7,1) 34%, rgba(0,0,0,1) 100%);  
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  overflow: hidden;
+  transition: all 1.3s ease-in-out;
 }
 
-.App-link {
-  color: #61dafb;
+@keyframes move {
+  0% {left:19%;width:30px;height:30px;}
+  30% {width:15px;height:15px;
+      border-radius: 10%;}
+  50% {left:90%;width:30px;height:30px;
+      border-radius: 100%;}
+  70% {width:15px;height:15px;
+      border-radius: 20%;}
+  100% {left:19%;width:30px;height:30px;}
+}
+@keyframes white {
+  0% {background: black;}
+  100% {background: white;}
+}
+@keyframes rotate {
+  from {transform: rotate(0);}
+  to {transform: rotate(360deg);}
+}
+@keyframes bigger{
+  from {height: 30px;}
+  to {height:100%;}
+}
+@keyframes wave{
+  0% {width: 65px;height: 67px;opacity: 1;transform: rotate(0);}
+  20% {opacity:0.4;}
+  60% {opacity:0.05;}
+  100% {width: 1000px;height: 1070px;opacity: 0;transform: rotate(-980deg);}
+}
+.secret{
+  position: absolute;
+  height: 72px;
+  width: 70px;
+  border: solid 1px #f0f0f0;
+  background-color: #000;
+  border-radius: 100%;
+  opacity: 1;
+  animation: rotate 2s infinite linear;
+  z-index: 2;
+}
+.secret2{
+  position: absolute;
+  height: 72px;
+  width: 70px;
+  z-index: 99;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.secret2:hover + #circle{
+  animation-play-state: paused;
+}
+.wave{
+  position: absolute;
+  background-color: #000;
+  height: 72px;
+  width: 70px;
+  border: solid 1px #f0f0f0;
+  border-radius: 100%;
+}
+#circle{
+  z-index: 9;
+  position: absolute;
+  background-color: #FFF;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  animation: move 1.7s infinite 0.0s;
+}
+.w1{
+  animation: wave 2.4s infinite 0.3s ease-out;
+}
+.w2{
+  animation: wave 2.4s infinite 0.9s ease-out;
+}
+.w3{
+  animation: wave 2.4s infinite 1.2s ease-out;
+}
+#secret0{
+  position: absolute;
+  z-index: 1000;
+  top:45%;
+  left:50%;
+  width: 3px;
+  height: 3px;
+  transition: 2s ease-in-out all;
+  opacity: 0;
+  background-color: #fff;
+  border:1px solid #007;
+  border-radius: 100%;
 }

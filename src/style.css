@@ -1,0 +1,24 @@
+body,html,button,li,ul,a {
+    all: unset
+}
+.body{
+    background-color: #333;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+#play-button{
+    color: #ccc;
+    display: flex;
+    align-self: flex-end;
+    text-align: center;
+    padding: 20px 100px;
+    margin-bottom: 200px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.4);
+}
